@@ -75,7 +75,7 @@ fun HomeScreen(navController: NavHostController) {
 @Composable
 fun SecondPageScreen(navController: NavHostController, name: String) {
     Text(
-        "Hola ",
+        "Hola thrhwrgrg",
         color = Color.Black,
         fontWeight = FontWeight.Bold,
         fontSize = 30.sp
