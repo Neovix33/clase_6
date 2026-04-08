@@ -79,5 +79,6 @@ fun SecondPageScreen(navController: NavHostController, name: String) {
         color = Color.Black,
         fontWeight = FontWeight.Bold,
         fontSize = 30.sp
+
     )
 }
