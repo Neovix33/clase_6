@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -17,18 +16,12 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
-import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -42,10 +35,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.bfernandez.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -53,35 +45,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    containerColor = Color(0, 16, 41, 255),
-                    topBar = {
-                        Button(
-                            onClick = {},
-                            colors = ButtonColors(
-                                containerColor = Color(40, 196, 217, 255),
-                                contentColor = Color.White,
-                                disabledContainerColor = Color.White,
-                                disabledContentColor = Color.White,
-                            )
-                        ) {
-                            Text("< Back", fontSize = 20.sp)
-                        }
-                    },
-                    bottomBar = {BottomBar()}
-                ) { innerPadding ->
-                    Column(modifier = Modifier.padding(innerPadding)) {
-                        Text(
-                            "Select User Type ",
-                            color = Color.White,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 30.sp
-                        )
-                        Text("Please choose your profession", color = Color(255, 255, 255, 200))
-                        GridCards()
-                    }
-                }
+                Navigation()
             }
         }
     }
@@ -168,7 +132,7 @@ fun GreetingPreview() {
 }
 
 @Composable
-fun BottomBar(){
+fun BottomBar(navController: NavHostController) {
     var textValue by remember { mutableStateOf("") }
     Row(
         modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp),
@@ -181,7 +145,7 @@ fun BottomBar(){
             label = { Text("Enter as Guest") },
         )
         Spacer(modifier = Modifier.size(20.dp))
-        Button(onClick = {},
+        Button(onClick = {navController.navigate(SecondPage("hola"))},
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(48, 82, 250, 255),
                 contentColor = Color.White
