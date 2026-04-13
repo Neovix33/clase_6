@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -43,16 +44,10 @@ fun Navigation() {
 fun HomeScreen(navController: NavHostController) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        containerColor = Color(0, 16, 41, 255),
+
         topBar = {
             Button(
                 onClick = {},
-                colors = ButtonColors(
-                    containerColor = Color(40, 196, 217, 255),
-                    contentColor = Color.White,
-                    disabledContainerColor = Color.White,
-                    disabledContentColor = Color.White,
-                )
             ) {
                 Text("< Back", fontSize = 20.sp)
             }
@@ -61,12 +56,10 @@ fun HomeScreen(navController: NavHostController) {
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Text(
-                "Select User Type ",
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
+                stringResource(id = R.string.select_user_type),
                 fontSize = 30.sp
             )
-            Text("Please choose your profession", color = Color(255, 255, 255, 200))
+            Text(stringResource(id = R.string.choose_profession))
             GridCards()
         }
     }
@@ -75,9 +68,11 @@ fun HomeScreen(navController: NavHostController) {
 @Composable
 fun SecondPageScreen(navController: NavHostController, name: String) {
     Text(
-        "Hola ",
+        stringResource(id = R.string.bienvenido_a_second_page),
         color = Color.Black,
         fontWeight = FontWeight.Bold,
         fontSize = 30.sp
     )
+
+
 }

@@ -35,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -142,14 +143,11 @@ fun BottomBar(navController: NavHostController) {
         TextField(
             value = textValue,
             onValueChange = { textValue = it },
-            label = { Text("Enter as Guest") },
+            label = { Text(stringResource(id = R.string.enter_as_guest)) },
         )
         Spacer(modifier = Modifier.size(20.dp))
         Button(onClick = {navController.navigate(SecondPage("hola"))},
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(48, 82, 250, 255),
-                contentColor = Color.White
-            )
+
         ) {
             Icon(Icons.AutoMirrored.Default.ArrowForward, contentDescription = "next")
         }
