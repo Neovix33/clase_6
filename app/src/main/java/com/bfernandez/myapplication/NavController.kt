@@ -66,19 +66,47 @@ fun HomeScreen(navController: NavHostController) {
                 fontWeight = FontWeight.Bold,
                 fontSize = 30.sp
             )
-            Text("Please choose your profession", color = Color(255, 255, 255, 200))
+            Text("Please choose your profession", color = Color(0, 255, 255, 200))
             GridCards()
         }
     }
 }
 
+
 @Composable
 fun SecondPageScreen(navController: NavHostController, name: String) {
-    Text(
-        "Hola thrhwrgrg",
-        color = Color.Black,
-        fontWeight = FontWeight.Bold,
-        fontSize = 30.sp
-
-    )
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        containerColor = Color(0, 16, 41, 255),
+        topBar = {
+            Button(
+                onClick = {
+                    val popped = navController.popBackStack()
+                    if (!popped) {
+                        navController.navigate(route = Home)
+                    }
+                },
+                colors = ButtonColors(
+                    containerColor = Color(40, 196, 217, 255),
+                    contentColor = Color.White,
+                    disabledContainerColor = Color.White,
+                    disabledContentColor = Color.White,
+                )
+            ) {
+                Text("< Back", fontSize = 20.sp)
+            }
+        },
+        bottomBar = {BottomBar(navController)}
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
+            Text(
+                "Select User Type ",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 30.sp
+            )
+            Text("Please choose your profession", color = Color(255, 255, 255, 200))
+            GridCards()
+        }
+    }
 }
